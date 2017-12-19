@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>删除</string>
+			<key>image</key>
+			<string></string>
+			<key>selectImage</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>翻转</string>
+			<key>image</key>
+			<string></string>
+			<key>selectImage</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>复制</string>
+			<key>image</key>
+			<string></string>
+			<key>selectImage</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>锁定</string>
+			<key>image</key>
+			<string></string>
+			<key>selectImage</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>上移</string>
+			<key>image</key>
+			<string></string>
+			<key>selectImage</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>下移</string>
+			<key>image</key>
+			<string></string>
+			<key>selectImage</key>
+			<string></string>
+		</dict>
+	</array>
+</dict>
+</plist>

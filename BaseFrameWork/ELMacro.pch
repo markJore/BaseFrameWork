@@ -1,0 +1,19 @@
+//
+//  ELMacro.pch
+//  BaseFrameWork
+//
+//  Created by Eleven on 2017/12/19.
+//  Copyright © 2017年 Eleven. All rights reserved.
+//
+
+#ifndef ELMacro_pch
+#define ELMacro_pch
+
+#define UISCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+
+#define UISCREEN_HEIGH [UIScreen mainScreen].bounds.size.height
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* ELMacro_pch */
