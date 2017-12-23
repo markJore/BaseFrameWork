@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MoveViewsDelegate
+
+- (void)panGestureEndFrame:(CGRect)frame;
+
+- (void)tapGestureBeginAction:(CGRect)frame;
+
+@end
+
+
 @interface MoveImageView : UIImageView
+
+@property (nonatomic, assign) id<MoveViewsDelegate> delegate;
+
 
 @end

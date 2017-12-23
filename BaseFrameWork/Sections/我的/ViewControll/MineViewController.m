@@ -9,9 +9,12 @@
 #import "MineViewController.h"
 #import "BottomView.h"
 #import "MoveImageView.h"
-@interface MineViewController ()<ClickCurrentOprationDelegate>
+@interface MineViewController ()<ClickCurrentOprationDelegate, MoveViewsDelegate>
 
 @property (nonatomic, strong) MoveImageView *moveImageView;
+@property (nonatomic, strong) UIImageView *lucencyview;
+@property (nonatomic, assign) NSInteger MoveViewTag;
+@property (nonatomic, assign) CGRect rect;
 @property (nonatomic, assign) BOOL flag;
 
 @end
@@ -31,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _flag = NO;
+    _MoveViewTag = 100;
     [self setUpView];
     // Do any additional setup after loading the view.
 }
@@ -42,9 +46,47 @@
     [self.view addSubview:boView];
 
     _moveImageView = [[MoveImageView alloc] initWithFrame:CGRectMake(UISCREEN_WIDTH/2 - 60, 200, 120, 116)];
+    _rect = _moveImageView.frame;
+    _moveImageView.tag = _MoveViewTag;
     _moveImageView.image = [UIImage imageNamed:@"MyWife"];
+    _moveImageView.delegate = self;
     [self.view addSubview:_moveImageView];
 
+
+}
+
+#pragma  mark --- 创建浮层试图
+- (void)creatSupernatantView{
+    _lucencyview = [[UIImageView alloc] initWithFrame:self.view.frame];
+    _lucencyview.backgroundColor = [UIColor redColor];
+    _lucencyview.alpha = 0.4;
+    _lucencyview.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeLucenyFromSuperView:)];
+    [_lucencyview addGestureRecognizer:tapAction];
+    [self.view addSubview:_lucencyview];
+    NSLog(@"tianafa ");
+}
+
+- (void)creatNewMoveView{
+    MoveImageView *newMoveView = [[MoveImageView alloc] initWithFrame:_rect];
+    newMoveView.tag = _MoveViewTag;
+    newMoveView.image = [UIImage imageNamed:@"MyWife"];
+    newMoveView.delegate = self;
+    [self.view addSubview:newMoveView];
+}
+
+- (void)tapGestureBeginAction:(CGRect)frame{
+    _rect = frame;
+    [self creatSupernatantView];
+    [self creatNewMoveView];
+}
+
+-(void)panGestureEndFrame:(CGRect)frame{
+    _rect = frame;
+}
+
+- (void)removeLucenyFromSuperView:(UITapGestureRecognizer *)tapAct{
+    [_lucencyview removeFromSuperview];
 }
 
 - (void)clickItemIndex:(NSInteger)index{
@@ -62,7 +104,13 @@
         }
             break;
         case 2:{
-
+            _MoveViewTag ++;
+            MoveImageView *moveViews = [[MoveImageView alloc] initWithFrame:CGRectMake(_rect.origin.x + 5, _rect.origin.y + 5, _rect.size.width, _rect.size.height)];
+            _rect = moveViews.frame;
+            moveViews.tag = _MoveViewTag;
+            moveViews.image = [UIImage imageNamed:@"MyWife"];
+            moveViews.delegate = self;
+            [self.view addSubview:moveViews];
         }
             break;
         case 3:{
@@ -83,7 +131,6 @@
             break;
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -13,6 +13,12 @@
 
 #define UISCREEN_HEIGH [UIScreen mainScreen].bounds.size.height
 
+#define NAVI_BAR_HEIGHT 44
+#define STATUS_BAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+#define NAVI_BAR_WIHT_STATUS_HEIGHT (44+[[UIApplication sharedApplication] statusBarFrame].size.height)
+#define NAVI_BAR_WIHTOUT_STATUS_HEIGHT 44
+
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

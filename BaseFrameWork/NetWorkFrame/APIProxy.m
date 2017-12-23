@@ -85,7 +85,6 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
 
-
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     requestSerializer.timeoutInterval = KSFNetworkingTimeoutSeconds;
     manager.requestSerializer = requestSerializer;

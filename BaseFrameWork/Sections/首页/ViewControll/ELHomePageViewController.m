@@ -7,7 +7,9 @@
 //
 
 #import "ELHomePageViewController.h"
-
+#import "APIProxy.h"
+#import "YYModel.h"
+#import "JokeModel.h"
 @interface ELHomePageViewController ()
 
 @end
@@ -16,6 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[APIProxy shareInstance] getRequestWithUrl:@"http://japi.juhe.cn/joke/content/list.from" params:@{@"key":@"c2aadbc93141e2527d8bd613a32ad8f2",@"sort":@"asc",@"time":@"1318745237"} responseBlock:^(NSDictionary *resonseDic, URLResponseStatus status) {
+        JokeModel *model = [JokeModel yy_modelWithDictionary:resonseDic];
+        NSLog(@"mmmmm %@ rrrr %@", model.result, model.reason);
+
+    }];
     // Do any additional setup after loading the view.
 }
 

@@ -30,7 +30,11 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tap{
-
+    UIImageView *view = (UIImageView *)tap.view;
+    CGRect frame = [view convertRect:view.bounds toView:view.superview];
+    [self removeFromSuperview];
+    [self.delegate panGestureEndFrame:frame];
+    [self.delegate tapGestureBeginAction:frame];
 }
 
 - (void)panAction:(UIPanGestureRecognizer *)pan{
@@ -39,6 +43,9 @@
         CGPoint translation = [pan translationInView:view.superview];
         [view setCenter:(CGPoint){view.center.x + translation.x, view.center.y + translation.y}];
         [pan setTranslation:CGPointZero inView:view.superview];
+    }else if (pan.state == UIGestureRecognizerStateEnded){
+        CGRect frame = [view convertRect:view.bounds toView:view.superview];
+        [self.delegate panGestureEndFrame:frame];
     }
 }
 
